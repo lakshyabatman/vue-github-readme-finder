@@ -80,8 +80,7 @@ export default {
       .then(() => {
         this.isLoading = false
       })
-      .catch(err => {
-        console.log(err)
+      .catch(() => {
         this.notFound = true
       })
   }
