@@ -1,12 +1,16 @@
 {
   "name": "github-repo-finder",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.14.0"
+  },
   "private": true,
   "scripts": {
+    "start":"node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "heroku-postbuild": "node server.js"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
