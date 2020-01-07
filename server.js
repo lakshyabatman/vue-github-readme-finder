@@ -1,19 +1,12 @@
-const http = require('http')
-const fs = require('fs')
-const httpPort = 8081
+const express = require('express')
+const port = process.env.PORT || 8080
+const path = require('path')
+const app = express()
 
-http.createServer((req, res) => {
-  fs.readFile('dist/index.html', 'utf-8', (err, content) => {
-    if (err) {
-      console.log('We cannot open "index.htm" file.')
-    }
-
-    res.writeHead(200, {
-      'Content-Type': 'text/html; charset=utf-8'
-    })
-
-    res.end(content)
-  })
-}).listen(httpPort, () => {
-  console.log('Server listening on: http://localhost:%s', httpPort)
+app.use(express.static(path.join(__dirname, '/dist')))
+app.get(/.*/, function (req, res) {
+  res.sendFile(path.join(__dirname, '/dist/index.html'))
+})
+app.listen(port, () => {
+  console.log('Server working')
 })
